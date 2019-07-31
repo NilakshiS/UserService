@@ -1,7 +1,7 @@
 package com.stackroute.Muzix.controller;
 
-import com.stackroute.Muzix.exceptions.TrackAlreadyExistsException;
-import com.stackroute.Muzix.exceptions.TrackNotFoundException;
+import com.stackroute.Muzix.exceptions.UserAlreadyExistsException;
+import com.stackroute.Muzix.exceptions.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,21 +12,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 //ControllerAdvice class to handle exceptions globally
 @ControllerAdvice("com.stackroute.Muzix.controller")
-public class TrackControllerAdvice extends ResponseEntityExceptionHandler {
+public class UserControllerAdvice extends ResponseEntityExceptionHandler {
 
-    //Exception Handler for TrackNotFoundException
-    @ExceptionHandler(value = {TrackNotFoundException.class})
+    //Exception Handler for UserNotFoundException
+    @ExceptionHandler(value = {UserNotFoundException.class})
     protected ResponseEntity<Object> handleNotFoundConflict(Exception ex, WebRequest request) {
 
-        String bodyOfResponse = "Track not found!";
+        String bodyOfResponse = "User not found!";
         return handleExceptionInternal(ex, bodyOfResponse,new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
 
-    //Exception Handler for TrackAlreadyExistsException
-    @ExceptionHandler(value = {TrackAlreadyExistsException.class})
+    //Exception Handler for UserAlreadyExistsException
+    @ExceptionHandler(value = {UserAlreadyExistsException.class})
     protected ResponseEntity<Object> handleAlreadyExistsConflict(Exception ex, WebRequest request) {
 
-        String bodyOfResponse = "Track already exists!";
+        String bodyOfResponse = "User already exists!";
         return handleExceptionInternal(ex, bodyOfResponse,new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
 }

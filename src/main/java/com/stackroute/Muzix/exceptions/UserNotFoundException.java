@@ -1,13 +1,13 @@
 package com.stackroute.Muzix.exceptions;
 
 //Custom Exception Class
-public class TrackNotFoundException extends Exception {
+public class UserNotFoundException extends Exception {
     String message;
 
-    public TrackNotFoundException() {
+    public UserNotFoundException() {
     }
 
-    public TrackNotFoundException(String message) {
+    public UserNotFoundException(String message) {
         super(message);
         this.message = message;
     }
